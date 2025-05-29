@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bugs on Media | Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="home.css"
+  <style>
+    
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="images/bugs.JPG" alt="Logo" width="38" height="38">
+      Bugs on Media
+    </a>
+  </div>
+</nav>
+
+<!-- Announcements Section -->
+<div class="container mt-4">
+  <div class="row">
+
+    <!-- Card 1 -->
+    <div class="col-lg-4 col-md-6">
+      <div class="card">
+        <h3>🎉 Weekly Quiz Open!</h3>
+        <p>Top scorer wins ₹500. Click below to participate.</p>
+        <a href="weekly.html" class="btn btn-gradient">Join Quiz</a>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-lg-4 col-md-6">
+      <div class="card">
+        <h3>🔥 Monthly Quiz Starting Soon!</h3>
+        <p>Exciting prizes and games await you.</p>
+        <a href="monthly.html" class="btn btn-gradient">View Details</a>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-lg-4 col-md-6">
+      <div class="card">
+        <h3>📢 Share with your friends!</h3>
+        <p>Copy and share this invite link!</p>
+        <button class="btn btn-gradient" onclick="copyLink()">Copy Link</button>
+        <p id="copyMsg"></p>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="col-lg-4 col-md-6">
+      <div class="card">
+        <h3>⚡ New Feature Alert!</h3>
+        <p>We've added a leaderboard for top players!</p>
+        <a href="#" class="btn btn-gradient">Check Now</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Footer with Social Media Links -->
+<footer>
+  <div class="container">
+    <div class="social-icons">
+      <a href="https://www.youtube.com/@bugsonmedia" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.instagram.com/bugsonmedia" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://t.me/bugsonmedia" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+      <a href="https://www.facebook.com/bugsonmedia" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+    </div>
+    <div class="footer-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="copyright">
+      &copy; 2023 Bugs on Media. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script>
+  function copyLink() {
+    navigator.clipboard.writeText("https://bugsonmedia.com/invite").then(() => {
+      document.getElementById("copyMsg").innerText = "Link copied to clipboard!";
+    });
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
