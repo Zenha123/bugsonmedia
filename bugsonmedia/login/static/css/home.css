@@ -1,0 +1,141 @@
+/* Base layout */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background: #FEE8D0;
+  font-family: "Segoe UI", sans-serif;
+  color: #333;
+}
+
+/* Navbar styling */
+.navbar {
+  background-color: #19546D;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  color: #fff;
+}
+
+.navbar-brand {
+  color: #fff !important;
+  font-weight: 600;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img {
+  background: #FEE8D0;
+  border-radius: 50%;
+  padding: 3px;
+  margin-right: 10px;
+  border: 2px solid #19546D;
+}
+
+/* Main content layout */
+.content {
+  flex: 1;
+  padding-top: 20px;
+}
+
+/* Card styling */
+.card {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 18px;
+  padding: 22px 18px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #19546D;
+}
+
+.card p {
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: #555;
+}
+
+/* Gradient / solid button styling */
+.btn-gradient {
+  background: linear-gradient(45deg, #19546D, #0F8D8D);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(45deg, #0F8D8D, #19546D);
+  color: #fff;
+}
+
+/* Advertisement banner */
+.ad-banner {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.ad-banner img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* Copy message */
+#copyMsg {
+  font-size: 13px;
+  margin-top: 8px;
+  color: green;
+}
+
+/* Footer styling */
+footer {
+  margin-top: 40px;
+  padding: 25px 0;
+  background-color: #19546D;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+}
+
+/* Social icons */
+.social-icons {
+  margin-bottom: 15px;
+}
+
+.social-icons a {
+  color: #fff;
+  font-size: 22px;
+  margin: 0 10px;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #FEE8D0;
+  transform: translateY(-3px);
+}
+
+/* Footer links */
+.footer-links {
+  margin-top: 15px;
+}
+
+.footer-links a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #FEE8D0;
+  text-decoration: underline;
+}
