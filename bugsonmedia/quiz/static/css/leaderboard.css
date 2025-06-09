@@ -1,0 +1,314 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #fff2e1;
+    padding: 20px;
+}
+
+.leaderboard-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fae0bf;
+    border-radius: 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.leaderboard-header {
+    padding: 20px;
+    background: linear-gradient(45deg, #19546D, #0F8D8D);
+    color: white;
+    text-align: center;
+}
+
+.leaderboard-header h1 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.leaderboard-header p {
+    opacity: 0.9;
+}
+
+.leaderboard-list {
+    padding: 15px;
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #e0c9a8;
+    transition: all 0.3s ease;
+}
+
+.leaderboard-item:last-child {
+    border-bottom: none;
+}
+
+.leaderboard-item.highlight {
+    background-color: #fee8d0;
+    border-left: 4px solid #24566f;
+}
+
+.rank {
+    font-weight: bold;
+    width: 40px;
+    text-align: center;
+    color: #19546D;
+}
+
+.user-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #FEE8D0;
+    border: 2px solid #24566f;
+}
+
+.username {
+    font-weight: 500;
+    color: #333;
+}
+
+.score {
+    width: 80px;
+    text-align: right;
+    font-weight: bold;
+    color: #19546D;
+}
+
+.date {
+    width: 120px;
+    text-align: right;
+    color: #555;
+    font-size: 13px;
+}
+
+.user-summary {
+    padding: 15px;
+    background: #e8e0d0;
+    text-align: center;
+    font-size: 16px;
+    border-top: 1px solid #d0c0a8;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 30px;
+    color: #555;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.leaderboard-table th, 
+.leaderboard-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #e0c9a8;
+    text-align: center;
+}
+
+.leaderboard-table th {
+    background: linear-gradient(45deg, #19546D, #0F8D8D);
+    color: white;
+    font-weight: 600;
+}
+
+.leaderboard-table tr:nth-child(even) {
+    background-color: #f5d9b3;
+}
+
+.leaderboard-table .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #FEE8D0;
+    border: 2px solid #24566f;
+}
+
+/* Highlight for logged-in user row */
+.highlight-row {
+    background-color: #fee8d0;
+    border-left: 4px solid #24566f;
+}
+
+/* Special style for top performer */
+.top-performer {
+    background-color: #e8e0d0;
+    font-weight: 600;
+}
+
+/* Responsive for small screens */
+@media (max-width: 600px) {
+    .date {
+        display: none;
+    }
+    .leaderboard-item {
+        padding: 10px;
+    }
+    .leaderboard-table th:nth-child(5),
+    .leaderboard-table td:nth-child(5) {
+        display: none;
+    }
+}
+
+
+/* Add these media queries at the end of your existing CSS */
+
+/* Medium screens (tablets) */
+@media (max-width: 768px) {
+    .leaderboard-container {
+        border-radius: 12px;
+    }
+    
+    .leaderboard-header {
+        padding: 15px;
+    }
+    
+    .leaderboard-header h1 {
+        font-size: 22px;
+    }
+    
+    .leaderboard-item {
+        padding: 10px 12px;
+    }
+    
+    .avatar {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .username {
+        font-size: 15px;
+    }
+    
+    .score, .date {
+        font-size: 14px;
+    }
+    
+    /* Table-specific responsive */
+    .leaderboard-table th, 
+    .leaderboard-table td {
+        padding: 10px 8px;
+        font-size: 14px;
+    }
+    
+    .leaderboard-table .avatar {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* Small screens (phones) */
+@media (max-width: 576px) {
+    body {
+        padding: 10px;
+    }
+    
+    .leaderboard-header {
+        padding: 12px;
+    }
+    
+    .leaderboard-header h1 {
+        font-size: 20px;
+    }
+    
+    .leaderboard-header p {
+        font-size: 14px;
+    }
+    
+    .leaderboard-item {
+        flex-wrap: wrap;
+        padding: 8px 10px;
+    }
+    
+    .rank {
+        width: 30px;
+        font-size: 15px;
+    }
+    
+    .user-info {
+        flex: 1 1 calc(100% - 130px);
+    }
+    
+    .avatar {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .username {
+        font-size: 14px;
+    }
+    
+    .score {
+        width: 60px;
+        font-size: 13px;
+    }
+    
+    .date {
+        width: 100%;
+        text-align: left;
+        padding-left: 42px; /* align with username */
+        padding-top: 4px;
+        font-size: 12px;
+    }
+    
+    /* Table-specific responsive */
+    .leaderboard-table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .leaderboard-table th, 
+    .leaderboard-table td {
+        padding: 8px 6px;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+    
+    .leaderboard-table .avatar {
+        width: 30px;
+        height: 30px;
+    }
+    
+    /* Hide date column on very small screens */
+    @media (max-width: 400px) {
+        .date {
+            display: none;
+        }
+        
+        .leaderboard-table th:nth-child(4),
+        .leaderboard-table td:nth-child(4) {
+            display: none;
+        }
+    }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+    .user-info {
+        flex: 1 1 calc(100% - 90px);
+    }
+    
+    .score {
+        width: 50px;
+    }
+}

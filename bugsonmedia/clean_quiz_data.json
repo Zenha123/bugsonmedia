@@ -1,0 +1,8 @@
+[
+{
+  "model": "login.quiz",
+  "pk": 1,
+  "fields": {
+    "title": "Tech Knowledge Challenge",
+    "description": "Test your understanding of modern technologies",
+    "prize": 

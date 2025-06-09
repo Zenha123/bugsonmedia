@@ -1,0 +1,113 @@
+[
+  {
+    "model": "quiz.Quiz",
+    "pk": 1,
+    "fields": {
+      "title": "Tech Knowledge Challenge",
+      "description": "Test your understanding of modern technologies",
+      "prize": "₹1000 Gift Card",
+      "start_date": "2025-06-01T00:00:00Z",
+      "end_date": "2025-06-08T23:59:59Z",
+      "is_active": true
+    }
+  },
+  {
+    "model": "quiz.Question",
+    "pk": 1,
+    "fields": {
+      "quiz": 1,
+      "text": "Which protocol is used for secure web communication?",
+      "question_type": "MC",
+      "order": 1,
+      "image": null
+    }
+  },
+  {
+    "model": "quiz.Choice",
+    "pk": 1,
+    "fields": {
+      "question": 1,
+      "text": "HTTP",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "quiz.Choice",
+    "pk": 2,
+    "fields": {
+      "question": 1,
+      "text": "HTTPS",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "quiz.Choice",
+    "pk": 3,
+    "fields": {
+      "question": 1,
+      "text": "FTP",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "quiz.Choice",
+    "pk": 4,
+    "fields": {
+      "question": 1,
+      "text": "SMTP",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "quiz.Question",
+    "pk": 2,
+    "fields": {
+      "quiz": 1,
+      "text": "Is JavaScript a statically-typed language?",
+      "question_type": "YN",
+      "order": 2,
+      "image": null
+    }
+  },
+  {
+    "model": "quiz.Choice",
+    "pk": 5,
+    "fields": {
+      "question": 2,
+      "text": "Yes",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "quiz.Choice",
+    "pk": 6,
+    "fields": {
+      "question": 2,
+      "text": "No",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "quiz.Question",
+    "pk": 3,
+    "fields": {
+      "quiz": 1,
+      "text": "Name any NoSQL database",
+      "question_type": "TEXT",
+      "order": 3,
+      "image": null
+    }
+  },
+  {
+    "model": "quiz.Quiz",
+    "pk": 2,
+    "fields": {
+      "title": "Inactive Sample Quiz",
+      "description": "This shouldn't appear in testing",
+      "prize": "₹500 Voucher",
+      "start_date": "2025-05-01T00:00:00Z",
+      "end_date": "2025-05-08T23:59:59Z",
+      "is_active": false
+    }
+  }
+]

@@ -1,0 +1,13 @@
+{
+    "builds": [{
+        "src": "bugsonmedia/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "15mb", "runtime": "python3.7.0", "maxDuration": 30 }
+    }],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "bugsonmedia/wsgi.py"
+        }
+    ]
+}

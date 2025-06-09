@@ -1,23 +1,17 @@
 
 from pathlib import Path
+import os
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-i4ag0sr=@xb_ut$3=5mu#(m^ea0grs+6m9$$0l)y3gb!-uf0z*'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
 
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -26,7 +20,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'login',
+    
+    'quiz',
     'social_django',
 ]
 ###########################
@@ -58,6 +53,8 @@ SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 #######3#
 
 
+
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
 
 
@@ -94,23 +91,19 @@ TEMPLATES = [
 WSGI_APPLICATION = 'bugsonmedia.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bugsonmedia',
-        'USER': 'zenha',
-        'PASSWORD': 'Zenha@123',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': 'postgres',
+        'USER': 'postgres.ettjpvzvcfprwunkfrza',
+        'PASSWORD': 'PT3FV5v1rfeBv4ll',
+        'HOST': 'aws-0-ap-south-1.pooler.supabase.com',
+        'PORT': '6543',
     }
 }
 
 
-# Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -128,8 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/3.2/topics/i18n/
+
 
 LANGUAGE_CODE = 'en-us'
 
@@ -142,12 +134,10 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'quiz/static'),
+]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

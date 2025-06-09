@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Leaderboard</title>
+    <link rel="stylesheet" href="{% static 'css/leaderboard.css' %}">
+    <style>
+        /* CSS Reset */
+       
+    </style>
+</head>
+<body>
+    <div class="leaderboard-container">
+        <div class="leaderboard-header">
+            <h1>{{ quiz.name|default:"Weekly Quiz" }} Leaderboard</h1>
+            <p>Top performers this week</p>
+        </div>
+        
+        <div class="leaderboard-list">
+            {% if leaderboard %}
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Profile</th>
+                            <th>Username</th>
+                            <th>Score</th>
+                            <th>Completed At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in leaderboard %}
+                        <tr class="
+                            {% if entry.user.id == request.user.id %}highlight-row{% endif %}
+                            {% if entry.rank == 1 %}top-performer{% endif %}
+                        ">
+                            <td>#{{ entry.rank }}</td>
+                            <td>
+                                <img src="{{ entry.profile_pic }}" 
+                                     alt="{{ entry.username }}" 
+                                     class="avatar"
+                                     onerror="this.src='https://www.gravatar.com/avatar/default?d=mp'">
+                            </td>
+                            <td>
+                                {{ entry.username|truncatechars:20 }}
+                                {% if entry.rank == 1 %} 🏆{% endif %}
+                            </td>
+                            <td>{{ entry.score }} pts</td>
+                            <td>{{ entry.completed_at|date:"M j, g:i a" }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    
+                </table>
+            {% else %}
+                <div class="empty-message">
+                    {% if error %}
+                        {{ error }}
+                    {% else %}
+                        No participants yet. Be the first!
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+        
+</body>
+</html>

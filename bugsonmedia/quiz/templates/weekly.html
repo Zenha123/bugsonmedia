@@ -1,0 +1,264 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ quiz.title }} | Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #673ab7;
+            --primary-light: #d1c4e9;
+            --primary-dark: #512da8;
+            --secondary-color: #f5f5f5;
+            --error-color: #d32f2f;
+            --text-color: #202124;
+            --border-color: #dadce0;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            color: var(--text-color);
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .form-header {
+            background-color: white;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 2px 6px 2px rgba(60,64,67,0.15);
+        }
+        
+        .form-title {
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 8px;
+            color: var(--primary-dark);
+        }
+        
+        .form-description {
+            font-size: 14px;
+            color: #5f6368;
+            margin-bottom: 16px;
+        }
+        
+        .form-prize {
+            font-size: 16px;
+            color: #1e8e3e;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .required-info {
+            font-size: 14px;
+            color: var(--error-color);
+            padding: 24px 0 16px;
+        }
+        
+        .question-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 2px 6px 2px rgba(60,64,67,0.15);
+        }
+        
+        .question-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        
+        .question-title span {
+            color: var(--error-color);
+            margin-left: 4px;
+        }
+        
+        .question-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 16px;
+            border-radius: 4px;
+        }
+        
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .radio-option input[type="radio"],
+        .checkbox-option input[type="checkbox"] {
+            margin-right: 12px;
+            width: 16px;
+            height: 16px;
+        }
+        
+        .text-answer {
+            width: 100%;
+            padding: 8px 0;
+            border: none;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 14px;
+            margin-bottom: 8px;
+            transition: border-bottom 0.3s;
+        }
+        
+        .text-answer:focus {
+            outline: none;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .file-upload {
+            margin-top: 16px;
+        }
+        
+        .file-upload-label {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        
+        .file-upload-label:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .file-upload input[type="file"] {
+            display: none;
+        }
+        
+        .file-upload-info {
+            font-size: 12px;
+            color: #5f6368;
+            margin-top: 8px;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 16px;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--primary-dark);
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 24px;
+            padding: 16px;
+            font-size: 12px;
+            color: #5f6368;
+        }
+        
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 0 10px;
+            }
+            
+            .form-title {
+                font-size: 24px;
+            }
+            
+            .question-card {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-header">
+            <h1 class="form-title">{{ quiz.title }}</h1>
+            <p class="form-description">{{ quiz.description }}</p>
+            <p class="form-prize">🏆 Prize: {{ quiz.prize }}</p>
+        </div>
+        
+        <p class="required-info">* Required</p>
+        
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            {% for question in questions %}
+            <div class="question-card">
+                <h3 class="question-title">
+                    Q{{ forloop.counter }}: {{ question.text }}<span>*</span>
+                </h3>
+                
+                {% if question.image %}
+                <div class="question-image-container">
+                    <img src="{{ question.image.url }}" alt="Question image" class="question-image">
+                </div>
+                {% endif %}
+                
+                <div class="question-content">
+                    {% if question.question_type == 'MC' or question.question_type == 'YN' %}
+                        {% for choice in question.choices.all %}
+                        <div class="radio-option">
+                            <input type="radio" 
+                                   name="question_{{ question.id }}" 
+                                   id="choice_{{ choice.id }}" 
+                                   value="{{ choice.id }}" required>
+                            <label for="choice_{{ choice.id }}">{{ choice.text }}</label>
+                        </div>
+                        {% endfor %}
+                    
+                    {% elif question.question_type == 'TEXT' %}
+                        <input type="text" class="text-answer" 
+                               name="question_{{ question.id }}" 
+                               placeholder="Your answer" required>
+                    
+                    {% elif question.question_type == 'IMG' %}
+                        <div class="file-upload">
+                            <label class="file-upload-label">
+                                Upload Image
+                                <input type="file" 
+                                    name="question_{{ question.id }}" 
+                                    accept="image/*" required>
+                            </label>
+                            <p class="file-upload-info">Upload an image that answers the question</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            
+            <div style="text-align: center;">
+                <button type="submit" class="submit-btn">Submit</button>
+            </div>
+        </form>
+        
+        <div class="form-footer">
+            <p>This content is protected by the quiz creator's copyright.</p>
+        </div>
+    </div>
+</body>
+</html>
