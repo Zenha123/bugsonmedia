@@ -22,35 +22,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'quiz',
-    'social_django',
 ]
 ###########################
 # Add these at the bottom of settings.py
-AUTHENTICATION_BACKENDS = (
-    'social_core.backends.instagram.InstagramOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
-)
+
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/home/' 
-
-# Instagram OAuth settings
-SOCIAL_AUTH_INSTAGRAM_KEY = 'your-instagram-client-id'
-SOCIAL_AUTH_INSTAGRAM_SECRET = 'your-instagram-client-secret'
-SOCIAL_AUTH_INSTAGRAM_EXTRA_DATA = ['user_profile']
-
-SOCIAL_AUTH_INSTAGRAM_AUTH_EXTRA_ARGUMENTS = {
-    'scope': 'user_profile',
-    'auth_type': 'rerequest'  # THIS IS CRUCIAL
-}
-
-
-SOCIAL_AUTH_SANITIZE_REDIRECTS = True
-SOCIAL_AUTH_RAISE_EXCEPTIONS = False
-
-#######3#
 
 
 
@@ -81,8 +60,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
             ],
         },
     },
