@@ -4,7 +4,7 @@ cffi==1.15.1
 charset-normalizer==3.4.2
 cryptography==45.0.3
 defusedxml==0.8.0rc2
-Django==3.2.25
+django==3.2.25
 idna==3.10
 oauthlib==3.2.2
 Pillow==9.5.0
