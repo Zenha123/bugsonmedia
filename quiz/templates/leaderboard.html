@@ -110,6 +110,58 @@
         padding: 0;
       }
     }
+
+
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.leaderboard-table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+  min-width: 800px;
+}
+
+.leaderboard-table th, .leaderboard-table td {
+  padding: 12px 10px;
+  text-align: center;
+  border-bottom: 1px solid #e0c9a8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Fixed width for Rank, Profile, Username, Score */
+.leaderboard-table th:nth-child(1),
+.leaderboard-table td:nth-child(1) {
+  width: 60px;
+}
+
+.leaderboard-table th:nth-child(2),
+.leaderboard-table td:nth-child(2) {
+  width: 60px;
+}
+
+.leaderboard-table th:nth-child(3),
+.leaderboard-table td:nth-child(3) {
+  width: 140px;
+}
+
+.leaderboard-table th:nth-child(4),
+.leaderboard-table td:nth-child(4) {
+  width: 100px;
+}
+
+/* Let Completed At or other columns take rest of space and scroll if needed */
+
+
+
+
+
   </style>
 </head>
 
