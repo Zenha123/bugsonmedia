@@ -305,3 +305,17 @@ body {
         width: 50px;
     }
 }
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #19546D;
+    border-radius: 4px;
+}
+
