@@ -165,3 +165,12 @@ body {
         height: 30px;
     }
 }
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-wrapper table {
+    min-width: 700px;
+}

@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Quiz Leaderboard</title>
     <link rel="stylesheet" href="{% static 'css/leaderboard.css' %}">
     <style>
@@ -20,11 +21,11 @@
         
         <div class="leaderboard-list">
             {% if leaderboard %}
-            <div class="table-responsive">
+            <div class="table-wrapper">
                 <table class="leaderboard-table">
                     <thead>
                         <tr>
-                            <th>Rankss</th>
+                            <th>Ranks</th>
                             <th>Profile</th>
                             <th>Username</th>
                             <th>Score</th>
