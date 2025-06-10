@@ -3,11 +3,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
   <title>Quiz Leaderboard</title>
-  <!--<link rel="stylesheet" href="{% static 'css/leaderboard.css' %}">-->
+
   <style>
     * {
       margin: 0;
@@ -19,7 +17,7 @@
     body {
       background-color: #fff2e1;
       padding: 20px;
-overflow-x: hidden;
+      overflow-x: hidden;
     }
 
     .leaderboard-container {
@@ -60,18 +58,10 @@ overflow-x: hidden;
     .leaderboard-table {
       border-collapse: collapse;
       width: 100%;
-      min-width: 600px;
+      min-width: 700px;
+      table-layout: auto;
     }
 
-    <!------->
-    .leaderboard-table {
-  border-collapse: collapse;
-  width: 100%;
-  min-width: 600px;
-  table-layout: auto;
-  overflow-x: auto;
-}
-<!------->
     .leaderboard-table th,
     .leaderboard-table td {
       padding: 12px 10px;
@@ -115,7 +105,6 @@ overflow-x: hidden;
       color: #555;
     }
 
-    /* Responsive: no hiding columns, allow horizontal scroll instead */
     @media (max-width: 600px) {
       .leaderboard-container {
         padding: 0;
@@ -123,6 +112,7 @@ overflow-x: hidden;
     }
   </style>
 </head>
+
 <body>
   <div class="leaderboard-container">
     <div class="leaderboard-header">
@@ -136,7 +126,7 @@ overflow-x: hidden;
         <table class="leaderboard-table">
           <thead>
             <tr>
-              <th>Ranks</th>
+              <th>Rank</th>
               <th>Profile</th>
               <th>Username</th>
               <th>Score</th>
