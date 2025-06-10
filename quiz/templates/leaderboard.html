@@ -2,71 +2,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Quiz Leaderboard</title>
-    <link rel="stylesheet" href="{% static 'css/leaderboard.css' %}">
-    <style>
-        /* CSS Reset */
-       
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Leaderboard</title>
+  <!--<link rel="stylesheet" href="{% static 'css/leaderboard.css' %}">-->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #fff2e1;
+      padding: 20px;
+    }
+
+    .leaderboard-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fae0bf;
+      border-radius: 18px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    .leaderboard-header {
+      padding: 20px;
+      background: linear-gradient(45deg, #19546D, #0F8D8D);
+      color: white;
+      text-align: center;
+    }
+
+    .leaderboard-header h1 {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .leaderboard-header p {
+      opacity: 0.9;
+    }
+
+    .leaderboard-list {
+      padding: 15px;
+    }
+
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .leaderboard-table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 600px;
+    }
+
+    .leaderboard-table th,
+    .leaderboard-table td {
+      padding: 12px 10px;
+      text-align: center;
+      border-bottom: 1px solid #e0c9a8;
+      white-space: nowrap;
+    }
+
+    .leaderboard-table th {
+      background: linear-gradient(45deg, #19546D, #0F8D8D);
+      color: white;
+      font-weight: 600;
+    }
+
+    .leaderboard-table tr:nth-child(even) {
+      background-color: #f5d9b3;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #FEE8D0;
+      border: 2px solid #24566f;
+    }
+
+    .highlight-row {
+      background-color: #fee8d0;
+      border-left: 4px solid #24566f;
+    }
+
+    .top-performer {
+      background-color: #e8e0d0;
+      font-weight: 600;
+    }
+
+    .empty-message {
+      text-align: center;
+      padding: 30px;
+      color: #555;
+    }
+
+    /* Responsive: no hiding columns, allow horizontal scroll instead */
+    @media (max-width: 600px) {
+      .leaderboard-container {
+        padding: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="leaderboard-container">
-        <div class="leaderboard-header">
-            <h1>{{ quiz.name|default:"Weekly Quiz" }} Leaderboard</h1>
-            <p>Top performers this week</p>
-        </div>
-        
-        <div class="leaderboard-list">
-            {% if leaderboard %}
-            <div class="table-wrapper">
-                <table class="leaderboard-table">
-                    <thead>
-                        <tr>
-                            <th>Ranks</th>
-                            <th>Profile</th>
-                            <th>Username</th>
-                            <th>Score</th>
-                            <th>Completed At</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for entry in leaderboard %}
-                        <tr class="
-                            {% if entry.user.id == request.user.id %}highlight-row{% endif %}
-                            {% if entry.rank == 1 %}top-performer{% endif %}
-                        ">
-                            <td>#{{ entry.rank }}</td>
-                            <td>
-                                <img src="{{ entry.profile_pic }}" 
-                                     alt="{{ entry.username }}" 
-                                     class="avatar"
-                                     onerror="this.src='https://www.gravatar.com/avatar/default?d=mp'">
-                            </td>
-                            <td>
-                                {{ entry.username|truncatechars:20 }}
-                                {% if entry.rank == 1 %} 🏆{% endif %}
-                            </td>
-                            <td>{{ entry.score }} pts</td>
-                            <td>{{ entry.completed_at|date:"M j, g:i a" }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                    
-                </table>
-                </div>
-            {% else %}
-                <div class="empty-message">
-                    {% if error %}
-                        {{ error }}
-                    {% else %}
-                        No participants yet. Be the first!
-                    {% endif %}
-                </div>
-            {% endif %}
-        </div>
-        
+  <div class="leaderboard-container">
+    <div class="leaderboard-header">
+      <h1>{{ quiz.name|default:"Weekly Quiz" }} Leaderboard</h1>
+      <p>Top performers this week</p>
+    </div>
+
+    <div class="leaderboard-list">
+      {% if leaderboard %}
+      <div class="table-wrapper">
+        <table class="leaderboard-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Profile</th>
+              <th>Username</th>
+              <th>Score</th>
+              <th>Completed At</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for entry in leaderboard %}
+            <tr class="
+              {% if entry.user.id == request.user.id %}highlight-row{% endif %}
+              {% if entry.rank == 1 %}top-performer{% endif %}
+            ">
+              <td>#{{ entry.rank }}</td>
+              <td>
+                <img src="{{ entry.profile_pic }}"
+                     alt="{{ entry.username }}"
+                     class="avatar"
+                     onerror="this.src='https://www.gravatar.com/avatar/default?d=mp'">
+              </td>
+              <td>
+                {{ entry.username|truncatechars:20 }}
+                {% if entry.rank == 1 %} 🏆{% endif %}
+              </td>
+              <td>{{ entry.score }} pts</td>
+              <td>{{ entry.completed_at|date:"M j, g:i a" }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+      <div class="empty-message">
+        {% if error %}
+        {{ error }}
+        {% else %}
+        No participants yet. Be the first!
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
 </body>
 </html>
