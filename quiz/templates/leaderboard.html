@@ -3,7 +3,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
   <title>Quiz Leaderboard</title>
   <!--<link rel="stylesheet" href="{% static 'css/leaderboard.css' %}">-->
   <style>
@@ -17,6 +19,7 @@
     body {
       background-color: #fff2e1;
       padding: 20px;
+overflow-x: hidden;
     }
 
     .leaderboard-container {
@@ -60,6 +63,15 @@
       min-width: 600px;
     }
 
+    <!------->
+    .leaderboard-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 600px;
+  table-layout: auto;
+  overflow-x: auto;
+}
+<!------->
     .leaderboard-table th,
     .leaderboard-table td {
       padding: 12px 10px;
@@ -124,7 +136,7 @@
         <table class="leaderboard-table">
           <thead>
             <tr>
-              <th>Rank</th>
+              <th>Ranks</th>
               <th>Profile</th>
               <th>Username</th>
               <th>Score</th>
