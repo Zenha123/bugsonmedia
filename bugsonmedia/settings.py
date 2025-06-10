@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-i4ag0sr=@xb_ut$3=5mu#(m^ea0grs+6m9$$0l)y3gb!-uf0z*
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["bugsonmedia.vercel.app"]
+ALLOWED_HOSTS = ["bugsonmedia.vercel.app",'127.0.0.1',]
 
 
 
